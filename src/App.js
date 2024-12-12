@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {user?.value ? <Message /> : <Login />}
+        {user?.value ? <Message user={user} /> : <Login />}
       </header>
     </div>
   );

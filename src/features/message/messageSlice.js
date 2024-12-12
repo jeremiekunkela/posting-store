@@ -12,7 +12,9 @@ export const messageSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.push(action.payload);
+      action.payload.map(message => {
+        state.push(message.body);
+      });
     },
   },
 });
