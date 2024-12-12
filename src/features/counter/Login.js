@@ -7,6 +7,14 @@ export function Login() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
+  const fetchUser = async () => {
+    const response = await fetch("/api/user");
+    const status = response.status;
+    if (status === 200) {
+      dispatch(add(name));
+    }
+  };
+
   return (
     <div>
       <div className={styles.row}>
@@ -17,7 +25,7 @@ export function Login() {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <button className={styles.button} onClick={() => dispatch(add(name))}>
+        <button className={styles.button} onClick={() => fetchUser()}>
           Set name
         </button>
       </div>
